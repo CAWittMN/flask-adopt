@@ -19,4 +19,4 @@ class Pet(db.Model):
 
 def connect_db(app):
     db.app = app
-    db.innit_app(app)
+    db.init_app(app)
