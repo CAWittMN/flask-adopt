@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-DEFAULT_IMAGE_URL = "https://www.clipartmax.com/png/small/38-387568_labrador-retriever-silhouette-puppy-clip-art-dog-silhouette-transparent-background.png"
+DEFAULT_IMAGE_URL = "https://img.freepik.com/premium-vector/set-black-silhouettes-pets-isolated-icons-dogs-cats-rabbit-parrot_647716-78.jpg?w=826"
 
 
 class Pet(db.Model):
