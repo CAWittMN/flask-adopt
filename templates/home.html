@@ -1,1 +1,33 @@
-{% extends 'base.html' %}{% block content %} {% endblock %}
+{% extends 'base.html' %}{% block content %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for pet in pets if pet.available == True %}
+    <div class="col">
+      <div class="card">
+        <img src="{{ pet.photo_url }}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ pet.name }}</h5>
+          <p class="card-text">I am available to adopt!</p>
+          <a href="/pet/{{ pet.id }}" class="card-link">View pet</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row"><hr /></div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for pet in pets if pet.available == False %}
+    <div class="col">
+      <div class="card">
+        <img src="{{ pet.photo_url }}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ pet.name }}</h5>
+          <p class="card-text">I have been adopted!</p>
+          <a href="/pet/{{ pet.id }}" class="card-link">View pet</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div class="card">
+      <img class="card-image-top" src="{{ pet.photo_url }}" />
+      <div class="card-body">
+        <h5 class="card-title">{{ pet.name }}</h5>
+        <p class="card-text">{{ pet.notes }}</p>
+      </div>
+      <div class="card-body">
+        <a href="/pet/{{ pet.id }}/edit" class="card-link">Edit</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-3"></div>
+</div>
+{% endblock %}
