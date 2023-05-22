@@ -86,5 +86,6 @@ def delete_pet(pet_id):
 
 @app.route("/pets/<status>")
 def show_pets(status):
+    """show all pets based on adoption status."""
     pets = Pet.query.all()
     return render_template("show-pets.html", pets=pets, status=status)
