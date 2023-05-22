@@ -23,7 +23,7 @@ with app.app_context():
 def show_home_page():
     """Show home page and list of all pets."""
 
-    pets = Pet.query.all()
+    pets = Pet.query.filter_by(available=True).order_by(Pet.id.desc()).limit(6)
     return render_template("home.html", pets=pets)
 
 
@@ -82,3 +82,9 @@ def delete_pet(pet_id):
     db.session.delete(pet)
     db.session.commit()
     return redirect("/")
+
+
+@app.route("/pets/<status>")
+def show_pets(status):
+    pets = Pet.query.all()
+    return render_template("show-pets.html", pets=pets, status=status)
