@@ -9,6 +9,11 @@
         <p class="card-text">{{ pet.notes }}</p>
       </div>
       <div class="card-body">
+        {% if pet.available == True %}
+        <p class="card-text">Bring me home!</p>
+        {% else %}
+        <p class="card-text">I've been adopted!</p>
+        {% endif %}
         <a href="/pet/{{ pet.id }}/edit" class="card-link">Edit</a>
       </div>
     </div>

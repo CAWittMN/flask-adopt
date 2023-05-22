@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-5 g-3">
+    {% if status and status == "available" %} 
+    {% for pet in pets if pet.available == True %}
+    <div class="col">
+      <div class="card">
+        <img src="{{ pet.photo_url }}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ pet.name }}</h5>
+          <p class="card-text">Adopt me!</p>
+          <a href="/pet/{{ pet.id }}" class="card-link">View pet</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% elif status and status == 'adopted' %} 
+    {% for pet in pets if pet.available == False %}
+    <div class="col">
+      <div class="card">
+        <img src="{{ pet.photo_url }}" class="card-img-top img-thumbnail" />
+        <div class="card-body">
+          <h5 class="card-title">{{ pet.name }}</h5>
+          <p class="card-text">I've been adopted!</p>
+          <a href="/pet/{{ pet.id }}" class="card-link">View pet</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+        {% for pet in pets if pet.available == True %}
+        <div class="col">
+            <div class="card">
+                <img src="{{ pet.photo_url }}" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ pet.name }}</h5>
+                    <p class="card-text">Adopt me!</p>
+                    <a href="/pet/{{ pet.id }}" class="card-link">View pet</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+  </div>
+</div>
