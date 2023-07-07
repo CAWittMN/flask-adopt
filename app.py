@@ -1,17 +1,18 @@
+import os
 from flask import Flask, render_template, redirect, flash, jsonify, url_for
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet, DEFAULT_IMAGE_URL
 from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "fluffyanimals"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///adopt"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_ECHO"] = True
-app.config["SQLALCHEMY_RECORD_QUERIES"] = True
-app.debug = True
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "temp")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI", "postgresql:///adopt")
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# app.config["SQLALCHEMY_ECHO"] = True
+# app.config["SQLALCHEMY_RECORD_QUERIES"] = True
+# app.debug = True
 
-debug = DebugToolbarExtension(app)
+# debug = DebugToolbarExtension(app)
 
 connect_db(app)
 
